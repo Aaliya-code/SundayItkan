@@ -1,0 +1,83 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String args[]) {
+        Register name = new Register(10);
+        System.out.println(name.price);
+    }
+
+}
+
+class Register {
+    
+    double price;
+    List<Integer> values = Arrays.asList (10000, 5000, 2000, 1000, 500, 100, 25, 10, 5, 1);
+    
+    Register(double price) {
+        this.price = price;
+
+    }
+    
+    void changePrice(double price) {
+        this.price = price;
+    }
+    
+    double getChange(double money) {
+        return money - price;
+    }
+    
+    List<Integer> getCash(double money) {
+        int change = (int) (100 * getChange(money));
+        List<Integer> answers = new ArrayList<>();
+        
+       /* int hunderds = change / 100;
+        change %= 100;*/
+        
+        for (int i = 0; i < values.size(); i++){
+            int amt = change / values.get(i);
+            change %= values.get(i);
+            answers.add(amt);
+        }
+        return answers;
+    }
+}
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class Store {
+    public void main(String args[]) {
+        private List<Item> items;
+        private double profit;
+        
+        public Store() {
+            items = new ArrayList<>();
+            profit = 0.0;
+            
+            addItem(300.99, "Xbox");
+            addItem(1.99, "Apples");
+            addItem(5.99, "Batteries");
+        }
+    public void addItem(double price, String name) {
+        items.add(new Item(price, name));
+    }
+    public double payItems(double payment, List<String> itemNames) {
+        double totalCost = 0.0;
+        for (String name : itemNames) {
+            for(Item item : items) {
+                if(item.getName(). equals(name)) {
+                    totalCost += item.getPrice();
+                }
+            }
+        }
+        profit += payment - totalCost
+        return totalCost;
+    }
+    public double getProfit() {
+        return profit;
+    }
+    }
+}
